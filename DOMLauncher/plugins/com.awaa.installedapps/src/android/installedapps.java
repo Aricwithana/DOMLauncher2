@@ -212,7 +212,7 @@ public class installedapps extends CordovaPlugin {
 
                              Intent appActivity = pm.getLaunchIntentForPackage(packageInfo.packageName);
 
-                             String appName = packageInfo.loadLabel(pm).toString();
+                             
 
                              //Code to send package information to Eclipse Log.
                              //Log.d(id, "Name:" + appName);
@@ -220,7 +220,7 @@ public class installedapps extends CordovaPlugin {
                              //Log.d(id, "Activity:" + appActivity);
  
                              if(appActivity != null){
-
+                                 String appName = packageInfo.loadLabel(pm).toString();
                                  String[] appIntent = appActivity.toString().split("/");
 
                                  String appIFormated = appIntent[1].substring(0, appIntent[1].length() - 2);

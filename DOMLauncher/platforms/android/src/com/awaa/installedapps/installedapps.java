@@ -125,7 +125,7 @@ public class installedapps extends CordovaPlugin {
                         	
                             if(appActivity != null){
                                 String pkgName = packageInfo.packageName;		
-                                String appName = packageInfo.loadLabel(cordova.getActivity().getPackageManager()).toString();
+                                String appName = packageInfo.loadLabel(pm).toString();
                                 
                                 
                                 //start icon
@@ -163,7 +163,7 @@ public class installedapps extends CordovaPlugin {
 								json.put("name", appName).put("activity", appIFormated).put("package", pkgName).put("path", "file://"+appDir+"/icons/"+ pkgName+".png");
 								jArray.put(json);
                             }
-						} catch (JSONException e) {
+						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}							
@@ -207,20 +207,20 @@ public class installedapps extends CordovaPlugin {
 
                      for (ApplicationInfo packageInfo : packages) {
 
-                         String pkgName = packageInfo.packageName;
-
-                         Intent appActivity = pm.getLaunchIntentForPackage(packageInfo.packageName);
-
-                         String appName = packageInfo.loadLabel(cordova.getActivity().getPackageManager()).toString();
-
-                         //Code to send package information to Eclipse Log.
-                         //Log.d(id, "Name:" + appName);
-                         //Log.d(id, "Package:" + pkgName);
-                         //Log.d(id, "Activity:" + appActivity);
                          try {
+                             String pkgName = packageInfo.packageName;
 
+                             Intent appActivity = pm.getLaunchIntentForPackage(packageInfo.packageName);
+
+                             
+
+                             //Code to send package information to Eclipse Log.
+                             //Log.d(id, "Name:" + appName);
+                             //Log.d(id, "Package:" + pkgName);
+                             //Log.d(id, "Activity:" + appActivity);
+ 
                              if(appActivity != null){
-
+                            	 String appName = packageInfo.loadLabel(pm).toString();
                                  String[] appIntent = appActivity.toString().split("/");
 
                                  String appIFormated = appIntent[1].substring(0, appIntent[1].length() - 2);
@@ -230,7 +230,7 @@ public class installedapps extends CordovaPlugin {
                                  jArray.put(json);
                              }
 
-                         } catch (JSONException e) {
+                         } catch (Exception e) {
                              // TODO Auto-generated catch block
                              e.printStackTrace();
                          }
