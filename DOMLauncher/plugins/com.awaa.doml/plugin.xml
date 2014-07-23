@@ -1,0 +1,34 @@
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.awaa.doml"
+    version="1.0.0">
+
+    <name>DOMLauncher System API</name>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <description>DOMLauncher System API</description>
+    <author>Aricwithana - mraricwithana@domlauncher.com</author>
+    <keywords></keywords>
+
+    <license>CC4.0NCAttrib</license>
+
+    <js-module src="www/doml.js" name="doml">
+        <clobbers target="window.doml" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+          <feature name="doml" >
+            <param name="android-package" value="com.awaa.doml.doml"/>  
+          </feature>
+        </config-file>
+
+        <source-file src="src/android/doml.java" target-dir="src/com/awaa/doml" />
+
+    </platform>
+</plugin>

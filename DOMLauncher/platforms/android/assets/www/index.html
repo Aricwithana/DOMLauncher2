@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-US" >
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">  
+<meta name="Description" content="DOMLauncher and DOMods, custom HTML5 Android Launcher.">
+<meta name="mobile-web-app-capable" content="yes">
+<title>DOMLauncher The First Full HTML5 Android Launcher</title>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+
+<script type="text/javascript" src="file:///android_asset/www/cordova.js"></script> 
+<script src="js/zepto.min.js"></script>
+
+</head>
+
+<body class="home blog">
+
+    <div class="flexc" id="page">
+        <div class="header">
+            <div class="logo"><a data-href=""><img id="logoIMG" src="images/logo.png"></a></div>
+            <span class="title" id="title">DOMLauncher</span>
+            <ul class="menu">
+                <li><a data-href="#appPanel">apps</a></li>
+                <li><a data-href="#systemPanel">system</a></li>
+                <li><a data-href="#domodsPanel">domods</a></li>
+                <li><a data-href="#infoPanel">info</a></li>
+                <li><a id="mobileMenuToggle">menu</a></li>
+            </ul>
+        </div>	
+        <div class="flexr flex content" id="pageContent">
+            <div class="flexc left">
+                <ul class="menu">
+                    <li><a data-href="#appPanel">apps</a></li>
+                    <li><a data-href="#systemPanel">system</a></li>
+                    <li><a data-href="#domodsPanel">domods</a></li>
+                    <li><a data-href="#infoPanel">info</a></li>
+                </ul> 
+            </div>
+            <div class="flexc flex" id="contentPanels">   
+                <div id="appPanel" class="contentPanel flexr shown"></div>
+                <div id="infoPanel" class="contentPanel"> 
+                    <h1>Welcome!</h1> 
+                    <p>Thank you for using DOMLauncher, the first Cordova Powered & Crosswalk Foundational Android Launcher!</p>
+                    <p>DOMLauncher provides a stock DOMod Interface (DMD/DMDi). Install custom DOMods for whole new and unique interface for your device.  Create your own utilizing nothing more than HTML5/CSS3/Js!</p>
+                    <p>The stock DOMod generally only appears if there is currently not a selected DOMod or there was an error loading a selection.</p> 
+                    <p>To install a new DOMod interface, place the unzipped folder into the DOMLauncher folder located on your device.  To select a DOMod interface, choose the DOMod selection from the menu.</p>
+                    <p>For more information:</p>
+                    <ul class="flexr menu outlinks">
+                        <li><a href="http://www.domlauncher.com/" onClick="javascript:return openExternal(this)">DOMLauncher</a></li>
+                        <li><a href="https://www.facebook.com/DOMLauncher" onClick="javascript:return openExternal(this)">Facebook</a></li>
+                        <li><a href="https://twitter.com/MrAricwithanA" onClick="javascript:return openExternal(this)">Twitter</a></li>
+                        <li><a href="https://github.com/AricwithanA/" onClick="javascript:return openExternal(this)">Github</a></li>
+                        <li><a href="https://www.youtube.com/user/DOMLauncher" onClick="javascript:return openExternal(this)">Youtube</a></li>
+                        <li><a href="http://cordova.apache.org/" onClick="javascript:return openExternal(this)">Cordova</a></li>
+                        <li><a href="http://crosswalk-project.org/" onClick="javascript:return openExternal(this)">Crosswalk</a></li>
+                        <li><a href="http://openweathermap.org/" onClick="javascript:return openExternal(this)">OWM</a></li>
+                    </ul>                    
+</div>
+                <div id="systemPanel" class="contentPanel">
+                    <ul class="list">
+                        <li>
+                            <div class="text">
+                                <h3>Fullscreen</h3>
+                                <small>Hide the Status Bar.</small>
+                            </div>
+                            <label class="chkbx" id="toggleFullscreen"><input type="checkbox"><div></div></label>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <h3>Orientation</h3>
+                                <small>Device Orientation</small>
+                            </div>
+                            <div class="radioCol" id="orienationControl">
+                                <label class="radio" name="orientation" id="orientationLandscape"><input name="orientation" type="radio"><div>landscape</div></label>
+                                <label class="radio" name="orientation" id="orientationPortrait"><input name="orientation" type="radio"><div>portrait</div></label>
+                                <label class="radio" name="orientation" id="orientationRotate"><input name="orientation" checked type="radio"><div>rotate</div></label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <h3>Mobile Data</h3>
+                                <small>Enable or Disable celluar data connection.</small>
+                            </div>
+                            <label class="chkbx" id="toggleData"><input type="checkbox"><div></div></label>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <h3>Wifi</h3>
+                                <small>Enable or Disable wifi connection.</small>
+                            </div>
+                            <label class="chkbx" id="toggleWifi"><input type="checkbox"><div></div></label>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <h3>Ringer Volume</h3>
+                                <small>Increase or decrease ringer volume.</small>
+                            </div>
+                            <div class="buttonRow" id="ringerControls">
+                                <input type="button" class="decrease" value="&lt;">
+                                <div class="text">15</div>
+                                <input type="button" class="increase" value="&gt;">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <h3>Ringer Mode</h3>
+                                <small>Enable Silent, Vibrate or Normal ringer mode.</small>
+                            </div>
+                            <div class="radioCol">
+                                <label class="radio" name="ringerMode" id="ringerSilent"><input name="ringerMode" type="radio" checked><div>silent</div></label>
+                                <label class="radio" name="ringerMode" id="ringerVibrate"><input name="ringerMode" type="radio"><div>vibrate</div></label>
+                                <label class="radio" name="ringerMode" id="ringerNormal"><input name="ringerMode" type="radio"><div>normal</div></label>
+                            </div>                                
+                        </li>
+                        <li>
+                            <div class="text">
+                                <h3>Media Volume</h3>
+                                <small>Increase or decrease media volume.</small>
+                            </div>
+                            <div class="buttonRow" id="mediaControls">
+                                <input type="button" class="decrease" value="&lt;">
+                                <div class="text">15</div>
+                                <input type="button" class="increase" value="&gt;">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <h3>Bluetooth</h3>
+                                <small>Enable or Disable bluetooth connection.</small>
+                            </div>
+                            <label class="chkbx" id="toggleBluetooth"><input type="checkbox"><div></div></label>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <h3>Brightness</h3>
+                                <small>Increase or decrease screen brightness.</small>
+                            </div>
+                            <div class="buttonRow" id="brightnessControls">
+                                <input type="button" class="decrease" value="&lt;">
+                                <div class="text">15</div>
+                                <input type="button" class="increase" value="&gt;">
+                            </div>                                
+                        </li>
+                        <li>
+                            <div class="text">
+                                <h3>Auto-Brightness</h3>
+                                <small>Enable or Disable the auto-brightness screen mode.</small>
+                            </div>
+                            <label class="chkbx" id="toggleAutoBright"><input type="checkbox"><div></div></label>
+                        </li>                            
+
+                    </ul>
+                </div>
+                <div id="domodsPanel" class="contentPanel">
+                    <ul class="list">
+
+                    </ul>
+                </div>
+                <div id="termsPanel" class="contentPanel">   
+                    <h2>Terms-Conditions</h2>
+
+                    <p>DOMLauncher License<br>
+                    Author:  Aric McGriff<br>
+                    Email:  mraricwithana@domlauncher.com<br>
+                    Website:  http://www.domlauncher.com<br>
+                    Date:  07-15-2014
+                    </p>
+                    <p>Definitions:</p>
+                    <p>Author:  Original creator and rights holder, Aric McGriff.  To contact go to http://www.domlauncher.com, email at mraricwithana@domlauncher.com or join the IRC Chat #phonegap on the irc.freenode.net server.</p>
+                    <p>DOMLauncher:  An Android home replacement application that loads in custom user interfaces that are written with web technologies.  Included plugins fall under the DOMLauncher umbrella and are not separate from the application.</p>
+                    <p>Plugins and/or Source Code:  Custom written Java that expands the out of box functionality of Cordova, this does not include the majority of usage needs required of a home replacement application.  This includes the JavaScript call wrappers for easier usage of the DOMLauncher API.</p>
+                    <p>DOMod: Also known as a DOMod Interface, DMD and DMDi.  All are terms for a custom user interface that is loaded into DOMLauncher.   These interfaces can also be referenced as a framework or toolkit.  DOMods maintain their own individual terms and conditions as a DOMod is separate from DOMLauncher.  </p>
+                    <p>For-Profit:  Any person(s), group(s) or legal entity who, through their routine process, uses, hosts or are to directly distributes DOMLauncher or any affiliated code that generates revenue from DOMLauncher or associated services.  In order to utilize DOMLauncher in such an environment or as a part of an internal corporate environment one should contact:  licensing@domlauncher.com</p>
+                    <p>Educational Use:  Any person(s), group(s) or legal entity that uses DOMLauncher as a tool to teach students, the For-Profit cause does not apply.</p>
+                    <p>User:  A person(s), group(s) or legal entity that only use the consumer side of the application.</p>
+                    <p>Developer:  A person(s), group(s) or legal entity that creates or adapts code for the DOMLauncher application.</p>
+                    <p>DOMod Developer: A person(s), group(s) or legal entity that create custom DOMods.</p>
+                    <p>Single Shot Launcher:  Is a modified version of DOMLauncher that bakes in a specific DOMod and does not load any other DOMod like its original, DOMLauncher.</p>
+                    <p>TERMS AND CONDITIONS</p>
+                    <p>1.  For-Profit use is prohibited.  DOMLauncher is for Non-Profit use unless usage qualifies under Educational Use.  </p>
+                    <p>2.  DOMLauncher does not cost money to obtain or use and source viewable/modifiable.  Under no conditions shall any right to the source code, trademarks or other associated first party material transfer to a third party that uses, modifies or releases modified versions of DOMLauncher.  </p>
+                    <p>3.  DOMLauncher may not be licensed or sub-licensed without the express permission of the Author.</p>
+                    <p>4.  DOMLauncher, its Author or any other associated relationships are not liable for any custom DOMod created by a third party.</p>
+                    <p>5.  The source code of DOMLauncher may not be used to create a competing Android launcher.<br>
+                    5.a  The sole exception being if DOMLauncher is modified to be a Single Shot Launcher.</p>
+                    <p>6.  Any released derivative work based on the DOMLauncher source code shall maintain the same standard of viewable/modifiable source as DOMLauncher itself.<br>
+                    6.a  All released derivative work shall provide this license in whole and unmodified and original creator cited.</p>
+                    <p>7.  DOMLauncher source code is available to allow the greatest control over their devices for Users, Developers and DOMod Developers.  By chance that a 3rd Party is negatively impacting the DOMLauncher brand or violating any other term and conditions concerning DOMLauncher or related materials, at the discretion of the Author, the 3rd Party will be served a Cease &amp; Desist, in writing.  Take-down is immediate upon receiving the Cease &amp; Desist.</p>
+                    <p>8.  This agreement may be periodically updated and adapted.</p>
+                    <p>9.  The DOMLauncher logo is a reproduced/modified work of the Android robot created from and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License.</p>
+                    <p>Disclaimer of Warranty.</p>
+                    <p>THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</p>
+                    <p>Limitation of Liability.</p>
+                    <p>IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+                    <p>Interpretation of Disclaimer of Warranty &amp; Limitation of Liability.</p>
+                    <p>If the disclaimer of warranty and limitation of liability provided<br>
+                    above cannot be given local legal effect according to their terms,<br>
+                    reviewing courts shall apply local law that most closely approximates<br>
+                    an absolute waiver of all civil liability in connection with the<br>
+                    Program, unless a warranty or assumption of liability accompanies a<br>
+                    copy of the Program in return for a fee.</p>
+                    <p>*Warranty &amp; Liability are cited from the Free Software Foundation, Inc. <http: fsf.org=""> GPL3 License. </http:></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <small>
+                <div class="menu">
+                    <ul id="footerCallouts" class="menu">
+                    <li id="currentPage"><h3>#appPanel</h3></li>
+                    <li id="cellSignal"><h3>signal - 100%</h3></li>
+                    </ul>
+                </div>		
+            </small>
+            <small>
+                <p>Copyright <a href="mailto:contact@domlauncher.com">Aricwithana</a> © 2014. | </p>
+                <p><a data-href="#termsPanel"  id="showTerms">Terms</a></p>
+            </small>
+        </div>
+    </div>    
+<script src="js/dmd.js"></script>
+</body>
+</html>

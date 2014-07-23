@@ -1,0 +1,34 @@
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.awaa.installedapps"
+    version="1.0.0">
+
+    <name>Installed Applications</name>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <description>This plugin returns installed application information for launching an app.  Also exports all app icons into DOMLauncher directory folder.</description>
+    <author>Aricwithana - mraricwithana@domlauncher.com</author>
+    <keywords></keywords>
+
+    <license>CC4.0NCAttrib</license>
+
+    <js-module src="www/installedapps.js" name="installedapps">
+        <clobbers target="window.installedapps" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+          <feature name="installedapps" >
+            <param name="android-package" value="com.awaa.installedapps.installedapps"/>  
+          </feature>
+        </config-file>
+
+        <source-file src="src/android/installedapps.java" target-dir="src/com/awaa/installedapps" />
+
+    </platform>
+</plugin>

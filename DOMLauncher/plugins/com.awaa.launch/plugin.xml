@@ -1,0 +1,34 @@
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.awaa.launch"
+    version="1.0.0">
+
+    <name>Launch</name>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <description>Launches directly to a system control view or launches an installed application.</description>
+    <author>Aricwithana - mraricwithana@domlauncher.com</author>
+    <keywords></keywords>
+
+    <license>CC4.0NCAttrib</license>
+
+    <js-module src="www/launch.js" name="launch">
+        <clobbers target="window.launch" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+          <feature name="launch" >
+            <param name="android-package" value="com.awaa.launch.launch"/>  
+          </feature>
+        </config-file>
+
+        <source-file src="src/android/launch.java" target-dir="src/com/awaa/launch" />
+
+    </platform>
+</plugin>

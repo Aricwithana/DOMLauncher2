@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.awaa.domlauncher" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Hello Cordova</name>
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    <name>DOMLauncher</name>
+    <description>
+        An HTML5 Android Launcher built upon Cordova and Crosswalk.
+    </description>
+    <author email="contact@domlauncher.com" href="http://www.domlauncher.com">
+        DOMLauncher Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <feature name="Accelerometer">
+        <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="Capture">
+        <param name="android-package" value="org.apache.cordova.mediacapture.Capture" />
+    </feature>
+    <feature name="Compass">
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="Contacts">
+        <param name="android-package" value="org.apache.cordova.contacts.ContactManager" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="Battery">
+        <param name="android-package" value="org.apache.cordova.batterystatus.BatteryListener" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
+    </feature>
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="Media">
+        <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="Vibration">
+        <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+    </feature>
+    <feature name="batterylevel">
+        <param name="android-package" value="com.awaa.batterylevel.batterylevel" />
+    </feature>
+    <feature name="bluetoothcontrols">
+        <param name="android-package" value="com.awaa.bluetoothcontrols.bluetoothcontrols" />
+    </feature>
+    <feature name="brightnesscontrols">
+        <param name="android-package" value="com.awaa.brightnesscontrols.brightnesscontrols" />
+    </feature>
+    <feature name="cellsignal">
+        <param name="android-package" value="com.awaa.cellsignal.cellsignal" />
+    </feature>
+    <feature name="doml">
+        <param name="android-package" value="com.awaa.doml.doml" />
+    </feature>
+    <feature name="launch">
+        <param name="android-package" value="com.awaa.launch.launch" />
+    </feature>
+    <feature name="missedcomm">
+        <param name="android-package" value="com.awaa.missedcomm.missedcomm" />
+    </feature>
+    <feature name="mobiledata">
+        <param name="android-package" value="com.awaa.mobiledata.mobiledata" />
+    </feature>
+    <feature name="volumecontrols">
+        <param name="android-package" value="com.awaa.volumecontrols.volumecontrols" />
+    </feature>
+    <feature name="wificontrols">
+        <param name="android-package" value="com.awaa.wificontrols.wificontrols" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" onload="true" value="org.apache.cordova.statusbar.StatusBar" />
+    </feature>
+    <feature name="installedapps">
+        <param name="android-package" value="com.awaa.installedapps.installedapps" />
+    </feature>
+</widget>
