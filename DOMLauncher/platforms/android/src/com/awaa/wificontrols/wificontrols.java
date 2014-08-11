@@ -108,14 +108,8 @@ String callback;
 					wifiManager.setWifiEnabled(true);
 					callbackContext.success(new JSONObject().put("returnVal", "enabled"));
 				}							
-			}
-            
-			if(action.equals("stop")){
-				if (wifiManager.isWifiEnabled()) {				   
-					stopListen();						
-					callbackContext.success(new JSONObject().put("returnVal", "stopped"));				
-				}							
-			}            		
+			}				
+				
 		return true;		
 
     }

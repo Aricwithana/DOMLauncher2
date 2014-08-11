@@ -20,7 +20,7 @@ public class missedcomm extends CordovaPlugin {
 	Timer callsTimer; 
     int smsCount = -1;
     int callCount = -1;
-     
+    
     int smsTiming = -1;
     String smsCallback;
     int callsTiming = -1;
@@ -178,14 +178,13 @@ public class missedcomm extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {      
 
-		
+		String callback = args.getJSONObject(0).getString("callback");
 		if(action.equals("sms") || action.equals("calls")){
 			String flag = args.getJSONObject(0).getString("flag");
+			int timing = args.getJSONObject(0).getInt("timing");
 			
 			if(action.equals("sms")){
 				if(flag.equals("enable")){
-					int timing = args.getJSONObject(0).getInt("timing");
-					String callback = args.getJSONObject(0).getString("callback");
 					startSMS(timing, callback);
 					callbackContext.success(new JSONObject().put("returnVal", "enabled"));							
 				}
@@ -199,12 +198,10 @@ public class missedcomm extends CordovaPlugin {
 			
 			if(action.equals("calls")){
 				if(flag.equals("enable")){
-					int timing = args.getJSONObject(0).getInt("timing");
-					String callback = args.getJSONObject(0).getString("callback");
 					startCalls(timing, callback);
 					callbackContext.success(new JSONObject().put("returnVal", "enabled"));							
 				}
-				 
+				
 				if(flag.equals("disable")){
 					stopCalls();
                     callbackContext.success(new JSONObject().put("returnVal", "disabled"));
@@ -214,7 +211,6 @@ public class missedcomm extends CordovaPlugin {
 
 		if(action.equals("check")){
 			String flag = args.getJSONObject(0).getString("flag");
-			String callback = args.getJSONObject(0).getString("callback");
             if(flag.equals("calls")){		
                     callCount = -1;
                     callsRun(callback);

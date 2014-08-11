@@ -29,12 +29,6 @@ function loadDMD(returnVal){
 }
 
 function setNewDMD(){
-    window.wificontrols.stop({});
-    window.missedcomm.sms({flag:'disable'});
-    window.missedcomm.calls({flag:'disable'});
-    window.cellsignal.disable({});
-    cordova.exec(null, null, "Battery", "stop", []);
-    
     var selectedDMD= $(this).attr('data-dmd');
     window.doml.setDMD({name:selectedDMD});
 }

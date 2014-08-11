@@ -418,6 +418,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
+        "id": "org.apache.cordova.splashscreen.SplashScreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
+    },
+    {
         "file": "plugins/com.awaa.batterylevel/www/batterylevel.js",
         "id": "com.awaa.batterylevel.batterylevel",
         "clobbers": [
@@ -446,10 +453,24 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/com.awaa.doml/www/doml.js",
+        "id": "com.awaa.doml.doml",
+        "clobbers": [
+            "window.doml"
+        ]
+    },
+    {
         "file": "plugins/com.awaa.launch/www/launch.js",
         "id": "com.awaa.launch.launch",
         "clobbers": [
             "window.launch"
+        ]
+    },
+    {
+        "file": "plugins/com.awaa.missedcomm/www/missedcomm.js",
+        "id": "com.awaa.missedcomm.missedcomm",
+        "clobbers": [
+            "window.missedcomm"
         ]
     },
     {
@@ -467,6 +488,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/com.awaa.wificontrols/www/wificontrols.js",
+        "id": "com.awaa.wificontrols.wificontrols",
+        "clobbers": [
+            "window.wificontrols"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.statusbar/www/statusbar.js",
         "id": "org.apache.cordova.statusbar.statusbar",
         "clobbers": [
@@ -478,34 +506,6 @@ module.exports = [
         "id": "com.awaa.installedapps.installedapps",
         "clobbers": [
             "window.installedapps"
-        ]
-    },
-    {
-        "file": "plugins/com.awaa.doml/www/doml.js",
-        "id": "com.awaa.doml.doml",
-        "clobbers": [
-            "window.doml"
-        ]
-    },
-    {
-        "file": "plugins/com.awaa.wificontrols/www/wificontrols.js",
-        "id": "com.awaa.wificontrols.wificontrols",
-        "clobbers": [
-            "window.wificontrols"
-        ]
-    },
-    {
-        "file": "plugins/com.awaa.missedcomm/www/missedcomm.js",
-        "id": "com.awaa.missedcomm.missedcomm",
-        "clobbers": [
-            "window.missedcomm"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.splashscreen/www/splashscreen.js",
-        "id": "org.apache.cordova.splashscreen.SplashScreen",
-        "clobbers": [
-            "navigator.splashscreen"
         ]
     }
 ];
@@ -528,19 +528,19 @@ module.exports.metadata =
     "org.apache.cordova.media": "0.2.6",
     "org.apache.cordova.dialogs": "0.2.4",
     "org.apache.cordova.vibration": "0.3.5",
+    "org.apache.cordova.splashscreen": "0.2.5",
     "com.awaa.batterylevel": "1.0.0",
     "com.awaa.bluetoothcontrols": "1.0.0",
     "com.awaa.brightnesscontrols": "1.0.0",
     "com.awaa.cellsignal": "1.0.0",
+    "com.awaa.doml": "1.0.0",
     "com.awaa.launch": "1.0.0",
+    "com.awaa.missedcomm": "1.0.0",
     "com.awaa.mobiledata": "1.0.0",
     "com.awaa.volumecontrols": "1.0.0",
-    "org.apache.cordova.statusbar": "0.1.7-dev",
-    "com.awaa.installedapps": "1.0.0",
-    "com.awaa.doml": "1.0.0",
     "com.awaa.wificontrols": "1.0.0",
-    "com.awaa.missedcomm": "1.0.0",
-    "org.apache.cordova.splashscreen": "0.2.5"
+    "org.apache.cordova.statusbar": "0.1.7-dev",
+    "com.awaa.installedapps": "1.0.0"
 }
 // BOTTOM OF METADATA
 });

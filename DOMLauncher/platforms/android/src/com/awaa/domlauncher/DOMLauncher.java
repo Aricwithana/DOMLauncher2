@@ -25,7 +25,6 @@ import org.apache.cordova.*;
 import java.io.File;
 import android.os.Environment;
 import android.util.Log;
-import android.webkit.WebSettings;
 
 import org.json.JSONException;
 import org.json.JSONStringer;
@@ -40,9 +39,7 @@ public class DOMLauncher extends CordovaActivity{
         super.init();
         // Set by <content src="index.html" /> in config.xml
         super.clearCache();      
-        super.appView.getSettings().setAppCacheEnabled(false); 
-        super.appView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-        
+			
 		File sdcard = Environment.getExternalStorageDirectory();
         File appDir = new File(sdcard+"/DOMLauncher");
         

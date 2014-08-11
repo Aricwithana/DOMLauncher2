@@ -4,7 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import android.content.Intent;
 import android.provider.Settings;
-import android.util.Log;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -14,20 +13,20 @@ public class launch extends CordovaPlugin {
 	
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
- 
+
         if(action.equals("app")){
             String appPackage = args.getJSONObject(0).getString("package");
             try {
-				String appActivity = args.getJSONObject(0).getString("activity");
-				Intent activityIntent = new Intent(Intent.ACTION_MAIN);
-				activityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				activityIntent.setClassName(appPackage, appPackage+appActivity);
-				cordova.getActivity().startActivity(activityIntent);
-			} catch (Exception e) {
-				Log.w("DOML", "Launch Issue", e);
+            	
 				Intent intent = cordova.getActivity().getPackageManager().getLaunchIntentForPackage(appPackage);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				cordova.getActivity().startActivity(intent);
+			} catch (Exception e) {
+				String appActivity = args.getJSONObject(0).getString("activity");
+				Intent activityIntent = new Intent(Intent.ACTION_VIEW);
+				activityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				activityIntent.setClassName(appPackage, appActivity);
+				cordova.getActivity().startActivity(activityIntent);
 			}
 		}
 
