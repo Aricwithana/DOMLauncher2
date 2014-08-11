@@ -38,5 +38,15 @@ module.exports = {
             'toggle',
             [{callback:args.callback}]
         );
-    },     
+    },
+    
+    stop:function(args) {
+        cordova.exec(
+            (!args.success) ? null : args.success, 
+            function(error){alert('Wifi Controls Error:'+error)}, 
+            "wificontrols", 
+            'stop',
+            []
+        );
+    },    
 };
