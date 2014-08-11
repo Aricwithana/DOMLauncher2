@@ -1,6 +1,7 @@
 package com.awaa.doml;
 
 import java.io.File;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,36 +37,32 @@ public class doml extends CordovaPlugin {
             callbackContext.success(new JSONObject().put("returnVal", jArray));	
         }		
 
-
-
         if(action.equals("restart")){
             restartApp();    
         }
-
-
+        
         if(action.equals("setDMD")){
             File sdcard = Environment.getExternalStorageDirectory();     
             SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.cordova.getActivity());
             String dmdName = args.getJSONObject(0).getString("name");
-
-            Editor editor = sharedPrefs.edit();
-
-            editor.putString("active", dmdName);
+            File dmd = new File(sdcard+"/DOMLauncher/"+dmdName+"/index.html");
             
-            if (editor.commit()){
-                this.webView.sendJavascript("window.location = 'file://"+sdcard+"/DOMLauncher/"+dmdName+"/index.html'");   
-                //restartApp();	
-            }else{
-                callbackContext.success(new JSONObject().put("returnVal", false));	
-            }            
+            if(dmd.exists()){    
+                Editor editor = sharedPrefs.edit();
+                editor.putString("active", dmdName);
+                if (editor.commit()){
+                    this.webView.sendJavascript("window.location = 'file://"+sdcard+"/DOMLauncher/"+dmdName+"/index.html'");   
+                }else{
+                    callbackContext.success(new JSONObject().put("returnVal", false));	
+                }             	
+            }
+           
         }
-		return true;
-
-        	
+		return true;  	
     }
         
 	private void restartApp() {			
-		this.cordova.getActivity().finish(); 
-		this.cordova.getActivity().startActivity(new Intent(this.cordova.getActivity(), this.cordova.getActivity().getClass()));	
+		cordova.getActivity().finish(); 
+		cordova.getActivity().startActivity(new Intent(cordova.getActivity(), cordova.getActivity().getClass()));	
 	} 
 }

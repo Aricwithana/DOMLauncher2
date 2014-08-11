@@ -6,17 +6,17 @@ module.exports = {
             function(error){alert('Missed Comm calls Error:'+error)}, 
             "missedcomm", 
             'calls',
-            [{timing:args.timing, callback:args.callback, flag:args.flag}]
+            [{timing:(!args.timing) ? null : args.timing, callback:(!args.callback) ? null : args.callback, flag:(!args.flag) ? null : args.flag}]
         );
     }, 
-    
+
     sms:function(args) {
         cordova.exec(
             (!args.success) ? null : args.success, 
             function(error){alert('Missed Comm sms Error:'+error)}, 
             "missedcomm", 
             'sms',
-            [{timing:args.timing, callback:args.callback, flag:args.flag}]
+            [{timing:(!args.timing) ? null : args.timing, callback:(!args.callback) ? null : args.callback, flag:(!args.flag) ? null : args.flag}]
         );
     }, 
     
@@ -26,7 +26,7 @@ module.exports = {
             function(error){alert('Missed Comm check Error:'+error)}, 
             "missedcomm", 
             'check',
-            [{callback:args.callback, flag:args.flag}]
+            [{timing:(!args.timing) ? null : args.timing, callback:(!args.callback) ? null : args.callback, flag:(!args.flag) ? null : args.flag}]
         );
     }    
 };
