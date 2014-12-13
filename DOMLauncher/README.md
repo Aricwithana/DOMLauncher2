@@ -16,15 +16,5 @@ Both of these can be done but are beyond my current ability/time to do so. I per
 
 Read through the wiki to learn about DOMLaunchers API and head over to http://www.domlauncher.com or http://www.facebook.com/domlauncher for updates and newly released DOMods!
 
-======
-
-DOMLauncher is in continual development.  Known issues currently:
-
-'White Flash' - Awaiting Crosswalk8 Stable
-DMD Cache - When reloading a DMD, cached version is loaded.
-Stall till interaction - Some API calls are blocked and will not return till after a user interacts with the UI.  Happens sporadically.
-
-Each is in continued testing and research.  For more information check out Facebook or the main website.
-
 -Aricwithana
 
