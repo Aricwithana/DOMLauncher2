@@ -1,8 +1,27 @@
-DOMLauncher License
+DOMLauncher 2.2.0 License
 Author: Aric McGriff
 Email: mraricwithana@domlauncher.com
 Website: http://www.domlauncher.com
-Date: 07-15-2014
+Date:08-13-2014
+
+Disclaimer of Warranty.
+
+THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+Limitation of Liability.
+
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+Interpretation of Disclaimer of Warranty & Limitation of Liability.
+
+If the disclaimer of warranty and limitation of liability provided
+above cannot be given local legal effect according to their terms,
+reviewing courts shall apply local law that most closely approximates
+an absolute waiver of all civil liability in connection with the
+Program, unless a warranty or assumption of liability accompanies a
+copy of the Program in return for a fee.
+
+*Warranty & Liability are cited from the Free Software Foundation, Inc. <http://fsf.org/> GPL3 License.
 
 Definitions:
 
@@ -24,13 +43,13 @@ Developer: A person(s), group(s) or legal entity that creates or adapts code for
 
 DOMod Developer: A person(s), group(s) or legal entity that create custom DOMods.
 
-Single Shot Launcher: Is a modified version of DOMLauncher that bakes in a specific DOMod and does not load any other DOMod like its original, DOMLauncher.
+Single Shot Launcher: Is a modified version of DOMLauncher that includes a singular internal DOMod. A Single Shot does not load additional DOMods. The single DMD would maintain a singular environment tailored to its intended purpose. The Single Shot would be branded as a separate app entity from DOMLauncher while attributing base code to the DOMLauncher Project.
 
 TERMS AND CONDITIONS
 
 1. For-Profit use is prohibited. DOMLauncher is for Non-Profit use unless usage qualifies under Educational Use.
 
-2. DOMLauncher does not cost money to obtain or use and source viewable/modifiable. Under no conditions shall any right to the source code, trademarks or other associated first party material transfer to a third party that uses, modifies or releases modified versions of DOMLauncher.
+2. DOMLauncher does not cost money to obtain or use and source visible/modifiable. Under no conditions shall any right to the source code, trademarks or other associated first party material transfer to a third party that uses, modifies or releases modified versions of DOMLauncher.
 
 3. DOMLauncher may not be licensed or sub-licensed without the express permission of the Author.
 
@@ -39,7 +58,7 @@ TERMS AND CONDITIONS
 5. The source code of DOMLauncher may not be used to create a competing Android launcher.
 5.a The sole exception being if DOMLauncher is modified to be a Single Shot Launcher.
 
-6. Any released derivative work based on the DOMLauncher source code shall maintain the same standard of viewable/modifiable source as DOMLauncher itself.
+6. Any released derivative work based on the DOMLauncher source code shall maintain the same standard of visible/modifiable source as DOMLauncher itself.
 6.a All released derivative work shall provide this license in whole and unmodified and original creator cited.
 
 7. DOMLauncher source code is available to allow the greatest control over their devices for Users, Developers and DOMod Developers. By chance that a 3rd Party is negatively impacting the DOMLauncher brand or violating any other term and conditions concerning DOMLauncher or related materials, at the discretion of the Author, the 3rd Party will be served a Cease & Desist, in writing. Take-down is immediate upon receiving the Cease & Desist.
@@ -48,21 +67,6 @@ TERMS AND CONDITIONS
 
 9. The DOMLauncher logo is a reproduced/modified work of the Android robot created from and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License.
 
-Disclaimer of Warranty.
+8.1.14 Edit: Moved Warranty & Liability to top. Updated definition of a Single Shot Launcher.
 
-THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
-
-Limitation of Liability.
-
-IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
-
-Interpretation of Disclaimer of Warranty & Limitation of Liability.
-
-If the disclaimer of warranty and limitation of liability provided
-above cannot be given local legal effect according to their terms,
-reviewing courts shall apply local law that most closely approximates
-an absolute waiver of all civil liability in connection with the
-Program, unless a warranty or assumption of liability accompanies a
-copy of the Program in return for a fee.
-
-*Warranty & Liability are cited from the Free Software Foundation, Inc. <http://fsf.org/> GPL3 License.
+8.13.14 Edit: Updated DOMLauncher version.
