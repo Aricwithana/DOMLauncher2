@@ -87,3 +87,19 @@
 * CB-6127 Updated translations for docs
 * CB-6978 captureImage() function fails in Android
 * CB-6890: Fix pluginManager access for 4.0.x branch
+
+### 0.3.3 (Sep 17, 2014)
+* Renamed test dir, added nested plugin.xml
+* added documentation for manual tests
+* CB-6959 Added manual tests
+* CB-6959 Port capture tests to plugin-test-framework
+
+### 0.3.4 (Oct 03, 2014)
+* CB-7453 Adds fallback to m4a audio format when mp3 recording fails.
+* CB-7429 Fixes image capture manual tests on windows
+* CB-7429 Move windows8 and windows Proxies into one file
+* CB-7429 Adds media capture support for windows
+
+### 0.3.5 (Dec 02, 2014)
+* CB-7597 - `Localizable.strings` for Media Capture are in the default template, it should be in the plugin
+* CB-7700 cordova-plugin-media-capture documentation translation: cordova-plugin-media-capture

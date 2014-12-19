@@ -19,11 +19,19 @@
 
 # org.apache.cordova.camera
 
-This plugin provides an API for taking pictures and for choosing images from
+This plugin defines a global `navigator.camera` object, which provides an API for taking pictures and for choosing images from
 the system's image library.
 
-    cordova plugin add org.apache.cordova.camera
+Although the object is attached to the global scoped `navigator`, it is not available until after the `deviceready` event.
 
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        console.log(navigator.camera);
+    }
+
+## Installation
+
+    cordova plugin add org.apache.cordova.camera
 
 ## navigator.camera.getPicture
 
@@ -33,7 +41,7 @@ base64-encoded `String`, or as the URI for the image file.  The method
 itself returns a `CameraPopoverHandle` object that can be used to
 reposition the file selection popover.
 
-    navigator.camera.getPicture( cameraSuccess, cameraError, [ cameraOptions ] );
+    navigator.camera.getPicture( cameraSuccess, cameraError, cameraOptions );
 
 ### Description
 
@@ -78,11 +86,19 @@ than `DATA_URL`.
 - Amazon Fire OS
 - Android
 - BlackBerry 10
+- Browser
 - Firefox OS
 - iOS
 - Tizen
 - Windows Phone 7 and 8
 - Windows 8
+
+### Preferences (iOS)
+
+-  __CameraUsesGeolocation__ (boolean, defaults to false). For capturing JPEGs, set to true to get geolocation data in the EXIF header. This will trigger a request for geolocation permissions if set to true.
+
+        <preference name="CameraUsesGeolocation" value="false" />
+
 
 ### Amazon Fire OS Quirks
 
@@ -92,16 +108,13 @@ scenario, the image may not appear when the cordova activity is restored.
 
 ### Android Quirks
 
-*Android 4.4 only*: Android 4.4 introduced a new [Storage Access Framework](https://developer.android.com/guide/topics/providers/document-provider.html) that makes it 
-easier for users to browse and open documents across all of their preferred document storage providers.
-Cordova has not yet been fully integrated with this new Storage Access Framework. Because of this, the `getPicture()`
-method will not correctly return pictures when the user selects from the "Recent", "Drive", "Images", or "External
-Storage" folders when the `destinationType` is `FILE_URI`. However, the user will be able to correctly select any pictures
-if they go through the "Gallery" app first. Potential workarounds for this issue are documented on [this StackOverflow question](http://stackoverflow.com/questions/19834842/android-gallery-on-kitkat-returns-different-uri-for-intent-action-get-content/20177611). Please see [CB-5398](https://issues.apache.org/jira/browse/CB-5398) to track this issue. 
-
 Android uses intents to launch the camera activity on the device to capture
 images, and on phones with low memory, the Cordova activity may be killed.  In this
 scenario, the image may not appear when the Cordova activity is restored.
+
+### Browser Quirks
+
+Can only return photos as base64-encoded image.
 
 ### Firefox OS Quirks
 
@@ -176,9 +189,9 @@ Optional parameters to customize the camera settings.
 
 ### Options
 
-- __quality__: Quality of the saved image, expressed as a range of 0-100, where 100 is typically full resolution with no loss from file compression. _(Number)_ (Note that information about the camera's resolution is unavailable.)
+- __quality__: Quality of the saved image, expressed as a range of 0-100, where 100 is typically full resolution with no loss from file compression. The default is 50. _(Number)_ (Note that information about the camera's resolution is unavailable.)
 
-- __destinationType__: Choose the format of the return value. Defined in `navigator.camera.DestinationType` _(Number)_
+- __destinationType__: Choose the format of the return value. The default is FILE_URI. Defined in `navigator.camera.DestinationType` _(Number)_
 
         Camera.DestinationType = {
             DATA_URL : 0,      // Return image as base64-encoded string
@@ -186,7 +199,7 @@ Optional parameters to customize the camera settings.
             NATIVE_URI : 2     // Return image native URI (e.g., assets-library:// on iOS or content:// on Android)
         };
 
-- __sourceType__: Set the source of the picture.  Defined in `navigator.camera.PictureSourceType` _(Number)_
+- __sourceType__: Set the source of the picture. The default is CAMERA. Defined in `navigator.camera.PictureSourceType` _(Number)_
 
         Camera.PictureSourceType = {
             PHOTOLIBRARY : 0,
@@ -196,7 +209,7 @@ Optional parameters to customize the camera settings.
 
 - __allowEdit__: Allow simple editing of image before selection. _(Boolean)_
 
-- __encodingType__: Choose the  returned image file's encoding.  Defined in `navigator.camera.EncodingType` _(Number)_
+- __encodingType__: Choose the  returned image file's encoding. Default is JPEG. Defined in `navigator.camera.EncodingType` _(Number)_
 
         Camera.EncodingType = {
             JPEG : 0,               // Return JPEG encoded image
@@ -213,7 +226,7 @@ Optional parameters to customize the camera settings.
             PICTURE: 0,    // allow selection of still pictures only. DEFAULT. Will return format specified via DestinationType
             VIDEO: 1,      // allow selection of video only, WILL ALWAYS RETURN FILE_URI
             ALLMEDIA : 2   // allow selection from all media types
-};
+        };
 
 - __correctOrientation__: Rotate the image to correct for the orientation of the device during capture. _(Boolean)_
 
@@ -221,14 +234,14 @@ Optional parameters to customize the camera settings.
 
 - __popoverOptions__: iOS-only options that specify popover location in iPad.  Defined in `CameraPopoverOptions`.
 
-- __cameraDirection__: Choose the camera to use (front- or back-facing).  Defined in `navigator.camera.Direction` _(Number)_
+- __cameraDirection__: Choose the camera to use (front- or back-facing). The default is BACK. Defined in `navigator.camera.Direction` _(Number)_
 
         Camera.Direction = {
             BACK : 0,      // Use the back-facing camera
             FRONT : 1      // Use the front-facing camera
         };
 
-### Amazon Fire OSQuirks
+### Amazon Fire OS Quirks
 
 - Any `cameraDirection` value results in a back-facing photo.
 
@@ -247,8 +260,6 @@ Optional parameters to customize the camera settings.
 ### BlackBerry 10 Quirks
 
 - Ignores the `quality` parameter.
-
-- Ignores the `sourceType` parameter.
 
 - Ignores the `allowEdit` parameter.
 
@@ -282,7 +293,7 @@ Optional parameters to customize the camera settings.
 
 - Set `quality` below 50 to avoid memory errors on some devices.
 
-- When using `destinationType.FILE_URI`, photos are saved in the application's temporary directory.  You may delete the contents of this directory using the `navigator.fileMgr` APIs if storage space is a concern.
+- When using `destinationType.FILE_URI`, photos are saved in the application's temporary directory. The contents of the application's temporary directory is deleted when the application ends.
 
 ### Tizen Quirks
 
@@ -297,6 +308,9 @@ Optional parameters to customize the camera settings.
 - Ignores the `correctOrientation` parameter.
 
 - Ignores the `cameraDirection` parameter.
+
+- Ignores the `saveToPhotoAlbum` parameter.  IMPORTANT: All images taken with the wp7/8 cordova camera API are always copied to the phone's camera roll.  Depending on the user's settings, this could also mean the image is auto-uploaded to their OneDrive.  This could potentially mean the image is available to a wider audience than your app intended.  If this a blocker for your application, you will need to implement the CameraCaptureTask as documented on msdn : [http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh394006.aspx](http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh394006.aspx)
+You may also comment or up-vote the related issue in the [issue tracker](https://issues.apache.org/jira/browse/CB-2083)
 
 - Ignores the `mediaType` property of `cameraOptions` as the Windows Phone SDK does not provide a way to choose videos from PHOTOLIBRARY.
 

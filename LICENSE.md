@@ -1,8 +1,8 @@
-DOMLauncher 2.2.0 License
+DOMLauncher 2.3.0 License
 Author: Aric McGriff
 Email: mraricwithana@domlauncher.com
 Website: http://www.domlauncher.com
-Date:08-13-2014
+Date:12-18-2014
 
 Disclaimer of Warranty.
 

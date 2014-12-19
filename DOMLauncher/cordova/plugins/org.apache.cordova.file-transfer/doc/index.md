@@ -21,6 +21,15 @@
 
 This plugin allows you to upload and download files.
 
+This plugin defines global `FileTransfer`, `FileUploadOptions` Constructors.
+
+Although in the global scope, they are not available until after the `deviceready` event.
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        console.log(FileTransfer);
+    }
+
 ## Installation
 
     cordova plugin add org.apache.cordova.file-transfer
@@ -29,12 +38,18 @@ This plugin allows you to upload and download files.
 
 - Amazon Fire OS
 - Android
-- BlackBerry 10*
+- BlackBerry 10
+- Firefox OS**
 - iOS
 - Windows Phone 7 and 8*
-- Windows 8*
+- Windows 8***
+- Windows***
 
 \* _Do not support `onprogress` nor `abort()`_
+
+\** _Do not support `onprogress`_
+
+\*** Partial support of `onprogress` for upload method. `onprogress` is called with empty progress event due to Windows limitations_
 
 # FileTransfer
 
@@ -62,19 +77,20 @@ __Parameters__:
 
 - __server__: URL of the server to receive the file, as encoded by `encodeURI()`.
 
-- __successCallback__: A callback that is passed a `Metadata` object. _(Function)_
+- __successCallback__: A callback that is passed a `FileUploadResult` object. _(Function)_
 
-- __errorCallback__: A callback that executes if an error occurs retrieving the `Metadata`. Invoked with a `FileTransferError` object. _(Function)_
-
-- __trustAllHosts__: Optional parameter, defaults to `false`. If set to `true`, it accepts all security certificates. This is useful since Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS. _(boolean)_
+- __errorCallback__: A callback that executes if an error occurs retrieving the `FileUploadResult`. Invoked with a `FileTransferError` object. _(Function)_
 
 - __options__: Optional parameters _(Object)_. Valid keys:
   - __fileKey__: The name of the form element.  Defaults to `file`. (DOMString)
   - __fileName__: The file name to use when saving the file on the server.  Defaults to `image.jpg`. (DOMString)
+  - __httpMethod__: The HTTP method to use - either `PUT` or `POST`. Defaults to `POST`. (DOMString)
   - __mimeType__: The mime type of the data to upload.  Defaults to `image/jpeg`. (DOMString)
   - __params__: A set of optional key/value pairs to pass in the HTTP request. (Object)
   - __chunkedMode__: Whether to upload the data in chunked streaming mode. Defaults to `true`. (Boolean)
   - __headers__: A map of header name/header values. Use an array to specify more than one value. (Object)
+  
+- __trustAllHosts__: Optional parameter, defaults to `false`. If set to `true`, it accepts all security certificates. This is useful since Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS. _(boolean)_
 
 ### Example
 
@@ -173,7 +189,7 @@ __Parameters__:
 
 - __successCallback__: A callback that is passed  a `FileEntry` object. _(Function)_
 
-- __errorCallback__: A callback that executes if an error occurs when retrieving the `Metadata`. Invoked with a `FileTransferError` object. _(Function)_
+- __errorCallback__: A callback that executes if an error occurs when retrieving the `FileEntry`. Invoked with a `FileTransferError` object. _(Function)_
 
 - __trustAllHosts__: Optional parameter, defaults to `false`. If set to `true`, it accepts all security certificates. This is useful because Android rejects self-signed security certificates. Not recommended for production use. Supported on Android and iOS. _(boolean)_
 
@@ -191,7 +207,7 @@ __Parameters__:
         uri,
         fileURL,
         function(entry) {
-            console.log("download complete: " + entry.fullPath);
+            console.log("download complete: " + entry.toURL());
         },
         function(error) {
             console.log("download error source " + error.source);
@@ -249,13 +265,15 @@ A `FileTransferError` object is passed to an error callback when an error occurs
 - __target__: URL to the target. (String)
 
 - __http_status__: HTTP status code.  This attribute is only available when a response code is received from the HTTP connection. (Number)
+- __exception__: Either e.getMessage or e.toString (String)
 
 ### Constants
 
-- `FileTransferError.FILE_NOT_FOUND_ERR`
-- `FileTransferError.INVALID_URL_ERR`
-- `FileTransferError.CONNECTION_ERR`
-- `FileTransferError.ABORT_ERR`
+- 1 = `FileTransferError.FILE_NOT_FOUND_ERR`
+- 2 = `FileTransferError.INVALID_URL_ERR`
+- 3 = `FileTransferError.CONNECTION_ERR`
+- 4 = `FileTransferError.ABORT_ERR`
+- 5 = `FileTransferError.NOT_MODIFIED_ERR`
 
 ## Backwards Compatibility Notes
 

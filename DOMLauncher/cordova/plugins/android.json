@@ -13,10 +13,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Contacts\"><param name=\"android-package\" value=\"org.apache.cordova.contacts.ContactManager\" /></feature>",
                             "count": 1
                         },
@@ -37,27 +33,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Globalization\"><param name=\"android-package\" value=\"org.apache.cordova.globalization.Globalization\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Media\"><param name=\"android-package\" value=\"org.apache.cordova.media.AudioHandler\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Capture\"><param name=\"android-package\" value=\"org.apache.cordova.mediacapture.Capture\" /></feature>",
                             "count": 1
                         },
                         {
@@ -119,6 +99,26 @@
                         {
                             "xml": "<feature name=\"YoikScreenOrientation\"><param name=\"android-package\" value=\"net.yoik.cordova.plugins.screenorientation.YoikScreenOrientation\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Media\"><param name=\"android-package\" value=\"org.apache.cordova.media.AudioHandler\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Capture\"><param name=\"android-package\" value=\"org.apache.cordova.mediacapture.Capture\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -126,10 +126,6 @@
             "AndroidManifest.xml": {
                 "parents": {
                     "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 5
-                        },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.READ_CONTACTS\" />",
                             "count": 1
@@ -151,6 +147,14 @@
                             "count": 1
                         },
                         {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 5
+                        },
+                        {
                             "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
                             "count": 2
                         },
@@ -164,10 +168,6 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.RECORD_VIDEO\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
                             "count": 1
                         }
                     ],
@@ -185,9 +185,6 @@
         "org.apache.cordova.battery-status": {
             "PACKAGE_NAME": "com.awaa.domlauncher"
         },
-        "org.apache.cordova.camera": {
-            "PACKAGE_NAME": "com.awaa.domlauncher"
-        },
         "org.apache.cordova.contacts": {
             "PACKAGE_NAME": "com.awaa.domlauncher"
         },
@@ -203,22 +200,10 @@
         "org.apache.cordova.dialogs": {
             "PACKAGE_NAME": "com.awaa.domlauncher"
         },
-        "org.apache.cordova.file": {
-            "PACKAGE_NAME": "com.awaa.domlauncher"
-        },
-        "org.apache.cordova.file-transfer": {
-            "PACKAGE_NAME": "com.awaa.domlauncher"
-        },
         "org.apache.cordova.globalization": {
             "PACKAGE_NAME": "com.awaa.domlauncher"
         },
         "org.apache.cordova.inappbrowser": {
-            "PACKAGE_NAME": "com.awaa.domlauncher"
-        },
-        "org.apache.cordova.media": {
-            "PACKAGE_NAME": "com.awaa.domlauncher"
-        },
-        "org.apache.cordova.media-capture": {
             "PACKAGE_NAME": "com.awaa.domlauncher"
         },
         "org.apache.cordova.network-information": {
@@ -264,6 +249,21 @@
             "PACKAGE_NAME": "com.awaa.domlauncher"
         },
         "net.yoik.cordova.plugins.screenorientation": {
+            "PACKAGE_NAME": "com.awaa.domlauncher"
+        },
+        "org.apache.cordova.file": {
+            "PACKAGE_NAME": "com.awaa.domlauncher"
+        },
+        "org.apache.cordova.camera": {
+            "PACKAGE_NAME": "com.awaa.domlauncher"
+        },
+        "org.apache.cordova.file-transfer": {
+            "PACKAGE_NAME": "com.awaa.domlauncher"
+        },
+        "org.apache.cordova.media": {
+            "PACKAGE_NAME": "com.awaa.domlauncher"
+        },
+        "org.apache.cordova.media-capture": {
             "PACKAGE_NAME": "com.awaa.domlauncher"
         }
     },
