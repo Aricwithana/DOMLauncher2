@@ -3,7 +3,19 @@ var missedSMSVal = 0;
 
 document.addEventListener('deviceready', onload, false);
 
+var loadCheckTimer = setInterval(loadCheck, 10000);
+
+function loadCheck(check){
+    if(check != true){
+        location.reload();             
+    }else{
+        clearInterval(loadCheckTimer);
+        loadCheckTimer = null;            
+    } 
+}
+
 function onload(){
+    loadCheck(true);
     document.addEventListener("pause", onPause, false);
     document.addEventListener("resume", onResume, false);
     document.addEventListener("menubutton", toggleSidebar, false);

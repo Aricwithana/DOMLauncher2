@@ -177,15 +177,15 @@ public class volumecontrols extends CordovaPlugin {
 		 //Ringer Modes
 		 if(action.equals("vibrate")){									
              audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-			int curVolume = audioManager.getStreamVolume(AudioManager.STREAM_RING);
-			callbackContext.success(new JSONObject().put("returnVal", curVolume));						
+			int curMode = audioManager.getRingerMode();
+			callbackContext.success(new JSONObject().put("returnVal", curMode));						
 		 
 		 }			 
 		 
 		 if(action.equals("silent")){									
 			 audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-			int curVolume = audioManager.getStreamVolume(AudioManager.STREAM_RING);
-			callbackContext.success(new JSONObject().put("returnVal", curVolume));						
+			int curMode = audioManager.getRingerMode();
+			callbackContext.success(new JSONObject().put("returnVal", curMode));						
 		 
 		 }	
 		 
