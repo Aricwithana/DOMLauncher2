@@ -1,7 +1,7 @@
 DOMLauncher
 ============
 
-DOMLauncher 2.3.0
+DOMLauncher 2.3.1
 
 DOMLauncher is a cutting edge web technologies based Android launcher combing two of the industries top rated software packages: Cordova & Crosswalk.
 
