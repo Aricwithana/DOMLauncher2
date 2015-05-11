@@ -187,7 +187,7 @@ public class volumecontrols extends CordovaPlugin {
 			int curMode = audioManager.getRingerMode();
 			callbackContext.success(new JSONObject().put("returnVal", curMode));						
 		 
-		 }	
+		 }		
 		 
 		 if(action.equals("normal")){									
 			 if(flag.equals("percentage")){

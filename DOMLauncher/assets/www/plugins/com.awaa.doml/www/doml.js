@@ -24,6 +24,8 @@ cordova.define("com.awaa.doml.doml", function(require, exports, module) { module
 document.addEventListener("deviceready", cordovaBack, false);
 
 function cordovaBack(){
-    document.addEventListener("backbutton", function(){}, false);
+    document.addEventListener("backbutton", backButton, false);
 }
+
+function backButton(){}
 });

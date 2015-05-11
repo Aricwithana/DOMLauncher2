@@ -56,13 +56,11 @@ function addScreenOrientationApi(obj) {
             return;
         }
         screenOrientation.currOrientation = orientation;
-        screen.currOrientation = orientation;
         screenOrientation.setOrientation(orientation);
     };
 
     obj.unlockOrientation = function() {
         screenOrientation.currOrientation = 'unlocked';
-        screen.currOrientation = 'unlocked';
         screenOrientation.setOrientation('unlocked');
     };
 }

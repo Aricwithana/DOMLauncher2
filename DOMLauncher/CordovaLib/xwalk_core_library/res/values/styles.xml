@@ -18,5 +18,23 @@
     
   </style>
   
+    
+  <style name="SelectActionMenuShare">
+    
+        
+    <item name="android:icon">@drawable/ic_menu_share_holo_light</item>
+    
+    
+  </style>
+  
+    
+  <style name="SelectActionMenuWebSearch">
+    
+        
+    <item name="android:icon">@drawable/ic_search</item>
+    
+    
+  </style>
+  
 
 </resources>

@@ -20,8 +20,6 @@ package org.apache.cordova;
 
 import org.apache.cordova.CordovaInterface;
 //import org.apache.cordova.LOG;
-import org.json.JSONArray;
-import org.json.JSONException;
 
 //import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -66,33 +64,19 @@ public class CordovaChromeClient extends XWalkUIClient {
     boolean isCurrentlyLoading;
     private boolean doClearHistory = false;
     
-    /**
-     * Constructor.
-     *
-     * @param cordova
-     */
+    @Deprecated
     public CordovaChromeClient(CordovaInterface cordova) {
         super(null);
         this.cordova = cordova;
     }
 
-    /**
-     * Constructor.
-     * 
-     * @param ctx
-     * @param app
-     */
     public CordovaChromeClient(CordovaInterface ctx, CordovaWebView app) {
         super(app);
         this.cordova = ctx;
         this.appView = app;
     }
 
-    /**
-     * Constructor.
-     * 
-     * @param view
-     */
+    @Deprecated
     public void setWebView(CordovaWebView view) {
         this.appView = view;
     }
@@ -124,6 +108,7 @@ public class CordovaChromeClient extends XWalkUIClient {
      * @param url
      * @param message
      * @param result
+     * @see Other implementation in the Dialogs plugin.
      */
     private boolean onJsAlert(XWalkView view, String url, String message,
             final XWalkJavascriptResult result) {
@@ -167,6 +152,7 @@ public class CordovaChromeClient extends XWalkUIClient {
      * @param url
      * @param message
      * @param result
+     * @see Other implementation in the Dialogs plugin.
      */
     private boolean onJsConfirm(XWalkView view, String url, String message,
             final XWalkJavascriptResult result) {
@@ -216,63 +202,15 @@ public class CordovaChromeClient extends XWalkUIClient {
      * Since we are hacking prompts for our own purposes, we should not be using them for
      * this purpose, perhaps we should hack console.log to do this instead!
      *
-     * @param view
-     * @param url
-     * @param message
-     * @param defaultValue
-     * @param result
+     * @see Other implementation in the Dialogs plugin.
      */
-    private boolean onJsPrompt(XWalkView view, String url, String message, String defaultValue,
-            XWalkJavascriptResult result) {
-
-        // Security check to make sure any requests are coming from the page initially
-        // loaded in webview and not another loaded in an iframe.
-        boolean reqOk = false;
-        if (url.startsWith("file://") || Config.isUrlWhiteListed(url)) {
-            reqOk = true;
-        }
-
-        // Calling PluginManager.exec() to call a native service using 
-        // prompt(this.stringify(args), "gap:"+this.stringify([service, action, callbackId, true]));
-        if (reqOk && defaultValue != null && defaultValue.length() > 3 && defaultValue.substring(0, 4).equals("gap:")) {
-            JSONArray array;
-            try {
-                array = new JSONArray(defaultValue.substring(4));
-                String service = array.getString(0);
-                String action = array.getString(1);
-                String callbackId = array.getString(2);
-                String r = this.appView.exposedJsApi.exec(service, action, callbackId, message);
-                result.confirmWithResult(r == null ? "" : r);
-            } catch (JSONException e) {
-                e.printStackTrace();
-                return false;
-            }
-        }
-
-        // Sets the native->JS bridge mode. 
-        else if (reqOk && defaultValue != null && defaultValue.equals("gap_bridge_mode:")) {
-        	try {
-                this.appView.exposedJsApi.setNativeToJsBridgeMode(Integer.parseInt(message));
-                result.confirmWithResult("");
-        	} catch (NumberFormatException e){
-                result.confirmWithResult("");
-                e.printStackTrace();
-        	}
-        }
-
-        // Polling for JavaScript messages 
-        else if (reqOk && defaultValue != null && defaultValue.equals("gap_poll:")) {
-            String r = this.appView.exposedJsApi.retrieveJsMessages("1".equals(message));
-            result.confirmWithResult(r == null ? "" : r);
-        }
-
-        // Do NO-OP so older code doesn't display dialog
-        else if (defaultValue != null && defaultValue.equals("gap_init:")) {
-            result.confirmWithResult("OK");
-        }
-
-        // Show dialog
-        else {
+    private boolean onJsPrompt(XWalkView view, String origin, String message, String defaultValue, XWalkJavascriptResult result) {
+        // Unlike the @JavascriptInterface bridge, this method is always called on the UI thread.
+        String handledRet = appView.bridge.promptOnJsPrompt(origin, message, defaultValue);
+        if (handledRet != null) {
+            result.confirmWithResult(handledRet);
+        } else {
+            // Returning false would also show a dialog, but the default one shows the origin (ugly).
             final XWalkJavascriptResult res = result;
             AlertDialog.Builder dlg = new AlertDialog.Builder(this.cordova.getActivity());
             dlg.setMessage(message);
@@ -314,7 +252,7 @@ public class CordovaChromeClient extends XWalkUIClient {
         isCurrentlyLoading = true;
 
         // Flush stale messages.
-        this.appView.jsMessageQueue.reset();
+        this.appView.bridge.reset(url);
 
         // Broadcast message that page has loaded
         this.appView.postMessage("onPageStarted", url);

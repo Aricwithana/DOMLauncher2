@@ -16,7 +16,7 @@
     
 
         
-    <ImageView android:id="@+id/arrow_image" android:layout_alignParentLeft="true" android:layout_height="wrap_content" android:layout_marginBottom="7dp" android:layout_width="wrap_content" android:src="@drawable/bubble_arrow_up"/>
+    <ImageView android:contentDescription="@null" android:id="@+id/arrow_image" android:layout_height="wrap_content" android:layout_marginBottom="7dp" android:layout_width="wrap_content" android:src="@drawable/bubble_arrow_up"/>
     
 
     
@@ -24,7 +24,7 @@
   
 
     
-  <ImageView android:id="@id/icon_view" android:layout_alignParentLeft="true" android:layout_below="@id/top_view" android:layout_height="19dp" android:layout_marginRight="8dp" android:layout_width="19dp" android:src="@drawable/pageinfo_warning_major"/>
+  <ImageView android:contentDescription="@null" android:id="@id/icon_view" android:layout_alignParentLeft="true" android:layout_below="@id/top_view" android:layout_height="19dp" android:layout_marginRight="8dp" android:layout_width="19dp" android:src="@drawable/ic_warning"/>
   
 
     

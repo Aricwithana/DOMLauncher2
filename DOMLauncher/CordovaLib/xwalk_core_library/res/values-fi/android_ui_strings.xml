@@ -18,4 +18,27 @@
 <string name="color_picker_button_black">"Musta"</string>
 <string name="color_picker_button_white">"Valkoinen"</string>
 <string name="copy_to_clipboard_failure_message">"Kopiointi leikepöydälle epäonnistui"</string>
+<string name="accessibility_date_picker_month">"Kuukausi"</string>
+<string name="accessibility_date_picker_year">"Vuosi"</string>
+<string name="date_picker_dialog_set">"Aseta"</string>
+<string name="month_picker_dialog_title">"Aseta kuukausi"</string>
+<string name="accessibility_date_picker_week">"Viikko"</string>
+<string name="week_picker_dialog_title">"Aseta viikko"</string>
+<string name="time_picker_dialog_am">"ap"</string>
+<string name="time_picker_dialog_pm">"ip"</string>
+<string name="time_picker_dialog_title">"Aseta aika"</string>
+<string name="accessibility_time_picker_hour">"Tunti"</string>
+<string name="accessibility_time_picker_minute">"Minuutti"</string>
+<string name="accessibility_time_picker_second">"Sekunti"</string>
+<string name="accessibility_time_picker_milli">"Millisekunti"</string>
+<string name="accessibility_time_picker_ampm">"AP/IP"</string>
+<string name="time_picker_dialog_hour_minute_separator">"."</string>
+<string name="time_picker_dialog_minute_second_separator">"."</string>
+<string name="time_picker_dialog_second_subsecond_separator">","</string>
+<string name="date_time_picker_dialog_title">"Aseta päivämäärä ja aika"</string>
+<string name="accessibility_datetime_picker_date">"Päiväys"</string>
+<string name="accessibility_datetime_picker_time">"Aika"</string>
+<string name="date_picker_dialog_other_button_label">"Muu"</string>
+<string name="date_picker_dialog_title">"Aseta päivämäärä"</string>
+<string name="date_picker_dialog_clear">"Tyhjennä"</string>
 </resources>

@@ -18,7 +18,6 @@
 */
 package org.apache.cordova;
 
-import java.io.ByteArrayInputStream;
 import java.util.Hashtable;
 
 import org.apache.cordova.CordovaInterface;
@@ -29,23 +28,18 @@ import org.json.JSONObject;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.net.http.SslError;
-import android.util.Log;
 import android.view.View;
 //import android.webkit.HttpAuthHandler;
 //import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
-import android.webkit.WebResourceResponse;
 //import android.webkit.WebView;
 //import android.webkit.WebViewClient;
 import org.chromium.net.NetError;
-import org.xwalk.core.XWalkNavigationHistory;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkView;
 
@@ -64,9 +58,9 @@ import org.xwalk.core.XWalkView;
 public class CordovaWebViewClient extends XWalkResourceClient {
 
 	private static final String TAG = "CordovaWebViewClient";
-	private static final String CORDOVA_EXEC_URL_PREFIX = "http://cdv_exec/";
     CordovaInterface cordova;
     CordovaWebView appView;
+    CordovaUriHelper helper;
 
     // Success
     public static final int ERROR_OK = 0;
@@ -101,16 +95,10 @@ public class CordovaWebViewClient extends XWalkResourceClient {
     // Too many requests during this load
     public static final int ERROR_TOO_MANY_REQUESTS = -15;
 
-    CordovaUriHelper helper;
-
     /** The authorization tokens. */
     private Hashtable<String, AuthenticationToken> authenticationTokens = new Hashtable<String, AuthenticationToken>();
 
-    /**
-     * Constructor.
-     *
-     * @param cordova
-     */
+    @Deprecated
     public CordovaWebViewClient(CordovaInterface cordova) {
         super(null);
         this.cordova = cordova;
@@ -134,29 +122,11 @@ public class CordovaWebViewClient extends XWalkResourceClient {
      *
      * @param view
      */
+    @Deprecated
     public void setWebView(CordovaWebView view) {
         this.appView = view;
         helper = new CordovaUriHelper(cordova, view);
     }
-
-
-    // Parses commands sent by setting the webView's URL to:
-    // cdvbrg:service/action/callbackId#jsonArgs
-	private void handleExecUrl(String url) {
-		int idx1 = CORDOVA_EXEC_URL_PREFIX.length();
-		int idx2 = url.indexOf('#', idx1 + 1);
-		int idx3 = url.indexOf('#', idx2 + 1);
-		int idx4 = url.indexOf('#', idx3 + 1);
-		if (idx1 == -1 || idx2 == -1 || idx3 == -1 || idx4 == -1) {
-			Log.e(TAG, "Could not decode URL command: " + url);
-			return;
-		}
-		String service    = url.substring(idx1, idx2);
-		String action     = url.substring(idx2 + 1, idx3);
-		String callbackId = url.substring(idx3 + 1, idx4);
-		String jsonArgs   = url.substring(idx4 + 1);
-        appView.pluginManager.exec(service, action, callbackId, jsonArgs);
-	}
 
      /**
      * Report an error to the host application. These errors are unrecoverable (i.e. the main resource is unavailable).
@@ -175,20 +145,7 @@ public class CordovaWebViewClient extends XWalkResourceClient {
         // Clear timeout flag
         this.appView.loadUrlTimeout++;
 
-        // If this is a "Protocol Not Supported" error, then revert to the previous
-        // page. If there was no previous page, then punt. The application's config
-        // is likely incorrect (start page set to sms: or something like that)
-        if (errorCode == XWalkResourceClient.ERROR_UNSUPPORTED_SCHEME) {
-            if (view.getNavigationHistory().canGoBack()) {
-                view.getNavigationHistory().navigate(
-                    XWalkNavigationHistory.Direction.BACKWARD, 1);
-                return;
-            } else {
-                super.onReceivedLoadError(view, errorCode, description, failingUrl);
-            }
-        }
-
-        // Handle other errors by passing them to the webview in JS
+        // Handle error
         JSONObject data = new JSONObject();
         try {
             data.put("errorCode", errorCode);
@@ -200,9 +157,37 @@ public class CordovaWebViewClient extends XWalkResourceClient {
         this.appView.postMessage("onReceivedError", data);
     }
     
-    @Override
+	@Override
     public boolean shouldOverrideUrlLoading(XWalkView view, String url) {
         return helper.shouldOverrideUrlLoading(view, url);
+    }
+
+    /**
+    * Notify the host application that an SSL error occurred while loading a
+    * resource. The host application must call either callback.onReceiveValue(true)
+    * or callback.onReceiveValue(false). Note that the decision may be
+    * retained for use in response to future SSL errors. The default behavior
+    * is to pop up a dialog.
+    */
+    public void onReceivedSslError(XWalkView view, ValueCallback<Boolean> callback, SslError error) {
+        final String packageName = this.cordova.getActivity().getPackageName();
+        final PackageManager pm = this.cordova.getActivity().getPackageManager();
+
+        ApplicationInfo appInfo;
+        try {
+            appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
+            if ((appInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
+                // debug = true
+                callback.onReceiveValue(true);
+                return;
+            } else {
+                // debug = false
+                callback.onReceiveValue(false);
+            }
+        } catch (NameNotFoundException e) {
+            // When it doubt, lock it out!
+            callback.onReceiveValue(false);
+        }
     }
     
     /**

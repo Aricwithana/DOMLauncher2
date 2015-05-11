@@ -11,7 +11,7 @@
   
 
     
-  <FrameLayout android:background="@drawable/color_picker_border" android:id="@+id/selected_color_view_border" android:layout_alignParentRight="true" android:layout_height="40dp" android:layout_width="40dp" android:padding="2px">
+  <FrameLayout android:background="@drawable/color_picker_border" android:id="@+id/selected_color_view_border" android:layout_alignParentRight="true" android:layout_height="40dp" android:layout_width="40dp" android:padding="2dp">
     
 
         

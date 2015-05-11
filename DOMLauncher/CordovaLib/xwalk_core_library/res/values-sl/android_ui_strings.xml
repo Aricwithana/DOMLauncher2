@@ -18,4 +18,27 @@
 <string name="color_picker_button_black">"Črna"</string>
 <string name="color_picker_button_white">"Bela"</string>
 <string name="copy_to_clipboard_failure_message">"Kopiranje v odložišče ni uspelo"</string>
+<string name="accessibility_date_picker_month">"Mesec"</string>
+<string name="accessibility_date_picker_year">"Leto"</string>
+<string name="date_picker_dialog_set">"Nastavi"</string>
+<string name="month_picker_dialog_title">"Nastavitev meseca"</string>
+<string name="accessibility_date_picker_week">"Teden"</string>
+<string name="week_picker_dialog_title">"Nastavitev tedna"</string>
+<string name="time_picker_dialog_am">"dop."</string>
+<string name="time_picker_dialog_pm">"pop."</string>
+<string name="time_picker_dialog_title">"Nastavitev časa"</string>
+<string name="accessibility_time_picker_hour">"Ura"</string>
+<string name="accessibility_time_picker_minute">"Minuta"</string>
+<string name="accessibility_time_picker_second">"Sekunda"</string>
+<string name="accessibility_time_picker_milli">"Milisekunda"</string>
+<string name="accessibility_time_picker_ampm">"Dopoldne/popoldne"</string>
+<string name="time_picker_dialog_hour_minute_separator">":"</string>
+<string name="time_picker_dialog_minute_second_separator">":"</string>
+<string name="time_picker_dialog_second_subsecond_separator">"."</string>
+<string name="date_time_picker_dialog_title">"Nastavitev datuma in časa"</string>
+<string name="accessibility_datetime_picker_date">"Datum"</string>
+<string name="accessibility_datetime_picker_time">"Čas"</string>
+<string name="date_picker_dialog_other_button_label">"Drugo"</string>
+<string name="date_picker_dialog_title">"Nastavitev datuma"</string>
+<string name="date_picker_dialog_clear">"Počisti"</string>
 </resources>
